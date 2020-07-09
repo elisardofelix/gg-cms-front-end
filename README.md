@@ -14,7 +14,7 @@ Here is a list of the features in the current version **V0.1**:
 **Note:**
 **This is only the Front-End of the complete project, please click in the link below to go to the Back-End repository:**
 
-[gg-cms-back-end](https://github.com/elisardofelix/gg-cms/blob/master)
+[gg-cms-back-end](https://github.com/elisardofelix/gg-cms)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
