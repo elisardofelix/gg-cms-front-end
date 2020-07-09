@@ -4,7 +4,7 @@ import { fetchBlog, getBlog } from "../../api/post-api";
 import BlogPost from "./BlogPost";
 import Loader from "../Common/Loader";
 import conf from "../../config";
-import { post } from "jquery";
+import { useHistory } from "react-router-dom";
 
 const resource = fetchBlog();
 
@@ -14,6 +14,7 @@ const AllActiveBlogPosts = () => {
   const [iScrollIsFetching, setIScrollIsFetching] = useState(false);
   const [iScrollPage, setIScrollPage] = useState(1);
   const [paginationSize] = useState(conf.defaultPageQtyPag);
+  const history = useHistory();
 
   const scrollHandler = () => {
     let scrollingPoint =
@@ -57,8 +58,7 @@ const AllActiveBlogPosts = () => {
         setPost(posts);
       });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [history, paginationSize, first]);
 
   return (
     <React.Fragment>

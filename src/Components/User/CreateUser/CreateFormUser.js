@@ -37,6 +37,9 @@ const CreateFormUser = ({ handler }) => {
         <Form.Group controlId="formBasicStatus">
           <Form.Check type="checkbox" label="Active" />
         </Form.Group>
+        <Form.Group controlId="formBasicIsAdmin">
+          <Form.Check type="checkbox" label="Administrator" />
+        </Form.Group>
         <Button variant="primary btn-success" onClick={handler}>
           Create
         </Button>

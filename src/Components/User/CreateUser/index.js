@@ -18,6 +18,7 @@ const CreateUser = () => {
     let status = document.getElementById("formBasicStatus").checked
       ? "Active"
       : "Inactive";
+    let isAdmin = document.getElementById("formBasicIsAdmin").checked;
 
     saveUser(contextState.token, {
       username,
@@ -25,6 +26,7 @@ const CreateUser = () => {
       repassword,
       email,
       status,
+      isAdmin,
     })
       .then(() => {
         toastr.success("Usuario Creado Exitosamente.");
