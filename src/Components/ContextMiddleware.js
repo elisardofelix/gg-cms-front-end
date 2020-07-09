@@ -48,7 +48,7 @@ const ContextMiddleware = (props) => {
 
     const getTokenClaims = () => {
       let token = localContext.token;
-      if (token === "" || token === undefined) return;
+      if (token === "" || token === undefined) return null;
       let claims = token.split(".")[1];
       let decodedString = atob(claims);
       return JSON.parse(decodedString);

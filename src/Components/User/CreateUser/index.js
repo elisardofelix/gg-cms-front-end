@@ -4,6 +4,11 @@ import GlobalContext from "../../../context/globalcontext";
 import { saveUser } from "../../../api/user-api";
 import toastr from "toastr";
 
+const validateEmail = (email) => {
+  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+};
+
 const CreateUser = () => {
   const [contextState, ,] = useContext(GlobalContext);
   useEffect(() => {
@@ -11,30 +16,43 @@ const CreateUser = () => {
   }, []);
 
   const createUserHandler = () => {
-    let username = document.getElementById("formBasicUser").value;
-    let password = document.getElementById("formBasicPassword").value;
-    let repassword = document.getElementById("formBasicRePassword").value;
-    let email = document.getElementById("formBasicEmail").value;
-    let status = document.getElementById("formBasicStatus").checked
-      ? "Active"
-      : "Inactive";
-    let isAdmin = document.getElementById("formBasicIsAdmin").checked;
+    let userData = {
+      username: document.getElementById("formBasicUser").value,
+      password: document.getElementById("formBasicPassword").value,
+      repassword: document.getElementById("formBasicRePassword").value,
+      email: document.getElementById("formBasicEmail").value,
+      status: document.getElementById("formBasicStatus").checked
+        ? "Active"
+        : "Inactive",
+      isAdmin: document.getElementById("formBasicIsAdmin").checked,
+    };
 
-    saveUser(contextState.token, {
-      username,
-      password,
-      repassword,
-      email,
-      status,
-      isAdmin,
-    })
+    if (
+      userData.username === "" ||
+      userData.password === "" ||
+      userData.repassword === ""
+    ) {
+      toastr.error("Please fill all the form's fields.");
+      return;
+    }
+
+    if (userData.password !== userData.repassword) {
+      toastr.error("Password and Retype Password must be equal.");
+      return;
+    }
+
+    if (!validateEmail(userData.email)) {
+      toastr.error("The email is invalid.");
+      return;
+    }
+
+    saveUser(contextState.token, userData)
       .then(() => {
-        toastr.success("Usuario Creado Exitosamente.");
+        toastr.success("User created successfully.");
         document.getElementById("create-form").reset();
       })
       .catch((err) => {
-        toastr.error("Error en la Creacion.");
-        console.error(err);
+        toastr.error(JSON.parse(err.message).error);
       });
   };
 

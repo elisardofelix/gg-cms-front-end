@@ -23,14 +23,21 @@ const Header = () => {
           <Link
             to="/create-user"
             className="nav-link"
-            style={{ display: context.isAuth ? "initial" : "none" }}
+            style={{
+              display:
+                context.isAuth && contextMiddleware.getTokenClaims().admin
+                  ? "initial"
+                  : "none",
+            }}
           >
             Create User
           </Link>
           <Link
             to="/create-post"
             className="nav-link"
-            style={{ display: context.isAuth ? "initial" : "none" }}
+            style={{
+              display: context.isAuth ? "initial" : "none",
+            }}
           >
             Create Post
           </Link>

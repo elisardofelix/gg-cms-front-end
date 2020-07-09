@@ -55,6 +55,17 @@ const CreatePost = () => {
 
   const createPostHandler = () => {
     const content = jQuery("#editorjs > .ql-editor").html();
+
+    if (title === "" || permaLink === "") {
+      toastr.error("Please fill all the form's fields");
+      return;
+    }
+
+    if (content.length < 500) {
+      toastr.error("The content length must be at least 500 char.");
+      return;
+    }
+
     const post = {
       title,
       permaLink,
@@ -67,7 +78,7 @@ const CreatePost = () => {
         history.push("/");
       })
       .catch((err) => {
-        toastr.error("Error en la Creacion.");
+        toastr.error(JSON.parse(err.message).error);
         console.error(err);
       });
   };

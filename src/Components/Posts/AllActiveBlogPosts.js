@@ -28,7 +28,7 @@ const AllActiveBlogPosts = () => {
     ) {
       setIScrollIsFetching(true);
       setIScrollPage(iScrollPage + 1);
-      getBlog(paginationSize, iScrollPage)
+      getBlog(paginationSize, iScrollPage * (paginationSize - 1) + iScrollPage)
         .then((resPosts) => {
           setPost(
             Object.assign(
