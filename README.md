@@ -1,4 +1,26 @@
+# GG-CMS (GoGo-Content Management System)
+
+GG-CMS (GoGo-Content Management System) is a content management system in short, allows you to create your own blog and manage your own content.
+
+Right now is early stage, but the plan is to add more features in futures versions
+
+Here is a list of the features in the current version **V0.1**:
+
+- Show the list of active post with infinite Scroller
+- Create Posts
+- Create Users with admin role
+- JWT (Json Web Token) Implementation for security
+
+**Note:**
+**This is only the Front-End of the complete project, please click in the link below to go to the Back-End repository:**
+
+[gg-cms-back-end](https://github.com/elisardofelix/gg-cms/blob/master)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Custom Configuration File
+
+If you want to switch environment configuration or change any general configuration there are in the file `[PROJECT_DIRECTORY]/src/config.js`.
 
 ## Available Scripts
 
@@ -66,3 +88,11 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+## Contributions
+
+If you have any improve proposal to the code, please no doubt of sending me your pull request and I check to apply in the repository as soon as possible.
+
+Please feel free to contact me 😊: [elisardofelix@gmail.com](mailto:elisardofelix@gmail.com)
+
+Peace ❤
